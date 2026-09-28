@@ -1,0 +1,127 @@
+2026-09-28 11:54:41
+docker compose up -d --build
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.14kB 0.0s done
+#1 DONE 0.0s
+
+#2 [api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 315B 0.1s done
+#2 DONE 0.1s
+
+#3 [consumer internal] load build definition from Dockerfile
+#3 transferring dockerfile: 296B 0.1s done
+#3 DONE 0.1s
+
+#4 [api internal] load metadata for docker.io/library/python:3.12-slim
+#4 DONE 0.2s
+
+#5 [api internal] load .dockerignore
+#5 transferring context: 2B 0.0s done
+#5 DONE 0.1s
+
+#6 [consumer internal] load .dockerignore
+#6 transferring context: 2B 0.0s done
+#6 DONE 0.1s
+
+#7 [api 1/5] FROM docker.io/library/python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f
+#7 resolve docker.io/library/python:3.12-slim@sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f 0.1s done
+#7 DONE 0.1s
+
+#8 [consumer internal] load build context
+#8 transferring context: 8.32kB 0.0s done
+#8 DONE 0.1s
+
+#9 [api internal] load build context
+#9 transferring context: 64B 0.1s done
+#9 DONE 0.1s
+
+#10 [api 3/5] COPY requirements.txt .
+#10 CACHED
+
+#11 [api 4/5] RUN pip install -r requirements.txt
+#11 CACHED
+
+#12 [api 5/5] COPY app.py .
+#12 CACHED
+
+#13 [api 2/5] WORKDIR /app
+#13 CACHED
+
+#14 [consumer 3/5] COPY requirements.txt .
+#14 CACHED
+
+#15 [consumer 4/5] RUN pip install -r requirements.txt
+#15 CACHED
+
+#16 [api] exporting to image
+#16 exporting layers 0.0s done
+#16 exporting manifest sha256:7020be3b4396f4aebe671e76d237265ad9884125f825c597c443e71c5d77d6cc done
+#16 exporting config sha256:a3f7b55768eeb6bef101efb729b6f1b222dac77bcb9338048a8523fb6411bd12
+#16 ...
+
+#17 [consumer 5/5] COPY consumer.py reprocesar_fallidos.py ./
+#17 DONE 0.1s
+
+#16 [api] exporting to image
+#16 exporting config sha256:a3f7b55768eeb6bef101efb729b6f1b222dac77bcb9338048a8523fb6411bd12 0.0s done
+#16 exporting attestation manifest sha256:cea9659a40f425a17f42f0fec7c7f5ce9a0ec2da40d13c742b36756a05aadb80 0.1s done
+#16 exporting manifest list sha256:f46ace28603167afbcbe4b298f88cb0f94d33dc38729563da9696310769508c6
+#16 exporting manifest list sha256:f46ace28603167afbcbe4b298f88cb0f94d33dc38729563da9696310769508c6 0.1s done
+#16 naming to docker.io/library/lab03-pagos-api:latest 0.0s done
+#16 unpacking to docker.io/library/lab03-pagos-api:latest 0.0s done
+#16 DONE 0.4s
+
+#18 [consumer] exporting to image
+#18 exporting layers 0.5s done
+#18 exporting manifest sha256:e8eb1b19d3426b0112f8663a733400926b28a916947cf1b134b191234efe79a9 0.1s done
+#18 exporting config sha256:f7bb43779d52780c3fd822e613ad795472b6a4d53a19d39e74c07ceed5ca3334
+#18 exporting config sha256:f7bb43779d52780c3fd822e613ad795472b6a4d53a19d39e74c07ceed5ca3334 0.1s done
+#18 exporting attestation manifest sha256:53336b151369630b15f96c1fcf47a11a5779133ed806ff2415bdd6dd8cbbf99e
+#18 exporting attestation manifest sha256:53336b151369630b15f96c1fcf47a11a5779133ed806ff2415bdd6dd8cbbf99e 0.1s done
+#18 exporting manifest list sha256:210c7ff4fbe1b1ec482f1b511401c49fbd206d6a23dc3dd25887636001ce18b9
+#18 exporting manifest list sha256:210c7ff4fbe1b1ec482f1b511401c49fbd206d6a23dc3dd25887636001ce18b9 0.1s done
+#18 naming to docker.io/library/lab03-pagos-consumer:latest 0.0s done
+#18 unpacking to docker.io/library/lab03-pagos-consumer:latest
+#18 ...
+
+#19 [api] resolving provenance for metadata file
+#19 DONE 0.1s
+
+#18 [consumer] exporting to image
+#18 unpacking to docker.io/library/lab03-pagos-consumer:latest 0.1s done
+#18 DONE 1.2s
+
+#20 [consumer] resolving provenance for metadata file
+#20 DONE 0.1s
+ lab03-pagos-consumer  Built
+ lab03-pagos-api  Built
+ Network lab03-pagos_default  Creating
+ Network lab03-pagos_default  Created
+ Volume "lab03-pagos_mysql_data"  Creating
+ Volume "lab03-pagos_mysql_data"  Created
+ Volume "lab03-pagos_rabbitmq_data"  Creating
+ Volume "lab03-pagos_rabbitmq_data"  Created
+ Container lab03-mysql  Creating
+ Container lab03-rabbitmq  Creating
+ Container lab03-mysql  Created
+ Container lab03-rabbitmq  Created
+ Container lab03-api  Creating
+ Container lab03-consumer  Creating
+ Container lab03-api  Created
+ Container lab03-consumer  Created
+ Container lab03-mysql  Starting
+ Container lab03-rabbitmq  Starting
+ Container lab03-rabbitmq  Started
+ Container lab03-mysql  Started
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Waiting
+ Container lab03-rabbitmq  Waiting
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Healthy
+ Container lab03-rabbitmq  Healthy
+ Container lab03-mysql  Healthy
+ Container lab03-consumer  Starting
+ Container lab03-mysql  Healthy
+ Container lab03-api  Starting
+ Container lab03-api  Started
+ Container lab03-consumer  Started

@@ -1,0 +1,5 @@
+2026-09-28 12:05:14
+docker compose exec rabbitmq rabbitmqctl list_queues name messages_ready messages_unacknowledged consumers
+name	messages_ready	messages_unacknowledged	consumers
+pagos.fallidos	1	0	0
+pagos.registrados	0	0	1

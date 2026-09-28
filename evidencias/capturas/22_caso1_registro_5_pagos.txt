@@ -1,0 +1,25 @@
+2026-09-28 11:58:17
+docker compose run --rm herramientas python medir.py --n 5 --prefijo DET --no-esperar --etiqueta caso1_consumidor_detenido
+ Container lab03-mysql  Running
+ Container lab03-rabbitmq  Running
+ Container lab03-api  Running
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Waiting
+ Container lab03-mysql  Healthy
+ Container lab03-rabbitmq  Healthy
+Enviando 5 pagos seguidos a http://api:8000/pagos ...
+  #01 HTTP 201    60.94 ms  {"status": true, "message": "Pago registrado", "data": {"id": 22, "estado": "REGISTRADO"}}
+  #02 HTTP 201    23.52 ms  {"status": true, "message": "Pago registrado", "data": {"id": 23, "estado": "REGISTRADO"}}
+  #03 HTTP 201    18.79 ms  {"status": true, "message": "Pago registrado", "data": {"id": 24, "estado": "REGISTRADO"}}
+  #04 HTTP 201    21.79 ms  {"status": true, "message": "Pago registrado", "data": {"id": 25, "estado": "REGISTRADO"}}
+  #05 HTTP 201    17.66 ms  {"status": true, "message": "Pago registrado", "data": {"id": 26, "estado": "REGISTRADO"}}
+
+Tiempo de respuesta de la API: media 28.54 ms | máximo 60.94 ms | mínimo 17.66 ms
+Los 5 POST se enviaron en 0.144 s
+Estados justo después del envío: {'REGISTRADO': 5}
+
+================ TABLA DE MEDICIÓN ================
+Tiempo de respuesta de la API (media de los 5 registros): 28.54 ms
+Tiempo de respuesta de la API (máximo observado)            : 60.94 ms
+===================================================
+Resultados guardados en resultados/caso1_consumidor_detenido.json

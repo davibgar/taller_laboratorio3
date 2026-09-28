@@ -1,0 +1,4 @@
+2026-09-28 12:05:59
+docker compose exec consumer python reprocesar_fallidos.py
+Reencolado: {"pago_id": 47}
+Mensajes devueltos de pagos.fallidos a pagos.registrados: 1

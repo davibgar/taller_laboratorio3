@@ -1,0 +1,117 @@
+# Taller de Laboratorio N.º 3 - Procesamiento asíncrono de eventos
+# Autores: David Felipe Garcia Ortiz - Juan David Claros
+#
+# Un único comando levanta los cuatro servicios:
+#     docker compose up -d --build
+#
+# El servicio "herramientas" (perfil herramientas) sólo se usa para las mediciones:
+#     docker compose run --rm herramientas python medir.py --n 20 --etiqueta medicion_5s
+
+name: lab03-pagos
+
+x-zona-horaria: &zona
+  TZ: America/Bogota
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: lab03-mysql
+    command: ["--default-time-zone=-05:00"]
+    environment:
+      <<: *zona
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: pagos_db
+      MYSQL_USER: pagos_user
+      MYSQL_PASSWORD: pagos_pass
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "${MYSQL_HOST_PORT:-3307}:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -proot_pass --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:4-management-alpine
+    container_name: lab03-rabbitmq
+    hostname: lab03-rabbitmq
+    environment:
+      <<: *zona
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "${RABBIT_AMQP_PORT:-5672}:5672"
+      - "${RABBIT_UI_PORT:-15672}:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 30
+      start_period: 15s
+    restart: unless-stopped
+
+  api:
+    build: ./api
+    image: lab03-pagos-api
+    container_name: lab03-api
+    environment:
+      <<: *zona
+      DB_HOST: mysql
+      DB_USER: pagos_user
+      DB_PASSWORD: pagos_pass
+      DB_NAME: pagos_db
+      RABBIT_URL: amqp://guest:guest@rabbitmq:5672/
+    ports:
+      - "${API_HOST_PORT:-8090}:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  consumer:
+    build: ./consumer
+    image: lab03-pagos-consumer
+    container_name: lab03-consumer
+    environment:
+      <<: *zona
+      DB_HOST: mysql
+      DB_USER: pagos_user
+      DB_PASSWORD: pagos_pass
+      DB_NAME: pagos_db
+      RABBIT_HOST: rabbitmq
+      # Duración deliberada de la acción (3 a 5 s). Caso 2: PROCESS_SECONDS=15
+      PROCESS_SECONDS: ${PROCESS_SECONDS:-5}
+      # Caso 3: SIMULAR_FALLO=true hace fallar los pagos cuya referencia empiece por FALLA
+      SIMULAR_FALLO: ${SIMULAR_FALLO:-false}
+    volumes:
+      - ./comprobantes:/app/comprobantes
+    depends_on:
+      mysql:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  herramientas:
+    build: ./herramientas
+    image: lab03-pagos-herramientas
+    profiles: ["herramientas"]
+    environment:
+      <<: *zona
+    volumes:
+      - ./resultados:/resultados
+    depends_on:
+      - api
+
+volumes:
+  mysql_data:
+  rabbitmq_data:

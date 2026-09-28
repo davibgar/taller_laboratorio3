@@ -1,0 +1,11 @@
+2026-09-28 12:05:04
+docker compose run --rm herramientas python registrar.py FALLA-0001
+ Container lab03-rabbitmq  Running
+ Container lab03-mysql  Running
+ Container lab03-api  Running
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Waiting
+ Container lab03-rabbitmq  Healthy
+ Container lab03-mysql  Healthy
+12:05:08 POST /pagos {'referencia': 'FALLA-0001', 'valor': 125000, 'medio': 'transferencia'}
+HTTP 201 en 55.95 ms -> {'status': True, 'message': 'Pago registrado', 'data': {'id': 47, 'estado': 'REGISTRADO'}}

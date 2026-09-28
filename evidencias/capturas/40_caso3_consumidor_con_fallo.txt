@@ -1,0 +1,5 @@
+2026-09-28 12:05:03
+docker compose logs consumer --tail 3
+lab03-consumer  | 2026-09-28 12:05:00,012 [CONSUMIDOR] Conectado a MySQL (intento 1)
+lab03-consumer  | 2026-09-28 12:05:00,032 [CONSUMIDOR] Conectado a RabbitMQ (intento 1)
+lab03-consumer  | 2026-09-28 12:05:00,047 [CONSUMIDOR] Esperando mensajes en 'pagos.registrados' | PROCESS_SECONDS=5.0 | SIMULAR_FALLO=True

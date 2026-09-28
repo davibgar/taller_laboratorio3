@@ -1,0 +1,44 @@
+2026-09-28 12:04:56
+docker compose logs consumer --tail 42
+lab03-consumer  | 2026-09-28 11:59:32,735 [CONSUMIDOR] Conectado a RabbitMQ (intento 1)
+lab03-consumer  | 2026-09-28 11:59:35,206 [CONSUMIDOR] Esperando mensajes en 'pagos.registrados' | PROCESS_SECONDS=15.0 | SIMULAR_FALLO=False
+lab03-consumer  | 2026-09-28 11:59:40,464 [CONSUMIDOR] Pago 27 | TOMADO de la cola a las 11:59:40.464 (redelivered=False)
+lab03-consumer  | 2026-09-28 11:59:55,674 [CONSUMIDOR] Pago 27 | TERMINADO a las 11:59:55.673 (tomado 11:59:40.464, duración 15.209 s) -> PROCESADO | Comprobante generado: comprobante_000027.txt
+lab03-consumer  | 2026-09-28 11:59:55,675 [CONSUMIDOR] Pago 28 | TOMADO de la cola a las 11:59:55.675 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:00:10,914 [CONSUMIDOR] Pago 28 | TERMINADO a las 12:00:10.912 (tomado 11:59:55.675, duración 15.237 s) -> PROCESADO | Comprobante generado: comprobante_000028.txt
+lab03-consumer  | 2026-09-28 12:00:10,915 [CONSUMIDOR] Pago 29 | TOMADO de la cola a las 12:00:10.915 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:00:28,907 [CONSUMIDOR] Pago 29 | TERMINADO a las 12:00:28.906 (tomado 12:00:10.915, duración 17.991 s) -> PROCESADO | Comprobante generado: comprobante_000029.txt
+lab03-consumer  | 2026-09-28 12:00:28,910 [CONSUMIDOR] Pago 30 | TOMADO de la cola a las 12:00:28.910 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:00:51,501 [CONSUMIDOR] Pago 30 | TERMINADO a las 12:00:51.500 (tomado 12:00:28.910, duración 22.591 s) -> PROCESADO | Comprobante generado: comprobante_000030.txt
+lab03-consumer  | 2026-09-28 12:00:51,504 [CONSUMIDOR] Pago 31 | TOMADO de la cola a las 12:00:51.504 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:01:06,569 [CONSUMIDOR] Pago 31 | TERMINADO a las 12:01:06.569 (tomado 12:00:51.504, duración 15.065 s) -> PROCESADO | Comprobante generado: comprobante_000031.txt
+lab03-consumer  | 2026-09-28 12:01:06,571 [CONSUMIDOR] Pago 32 | TOMADO de la cola a las 12:01:06.571 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:01:21,739 [CONSUMIDOR] Pago 32 | TERMINADO a las 12:01:21.738 (tomado 12:01:06.571, duración 15.167 s) -> PROCESADO | Comprobante generado: comprobante_000032.txt
+lab03-consumer  | 2026-09-28 12:01:21,740 [CONSUMIDOR] Pago 33 | TOMADO de la cola a las 12:01:21.740 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:01:36,946 [CONSUMIDOR] Pago 33 | TERMINADO a las 12:01:36.945 (tomado 12:01:21.740, duración 15.205 s) -> PROCESADO | Comprobante generado: comprobante_000033.txt
+lab03-consumer  | 2026-09-28 12:01:36,946 [CONSUMIDOR] Pago 34 | TOMADO de la cola a las 12:01:36.946 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:01:51,972 [CONSUMIDOR] Pago 34 | TERMINADO a las 12:01:51.971 (tomado 12:01:36.946, duración 15.025 s) -> PROCESADO | Comprobante generado: comprobante_000034.txt
+lab03-consumer  | 2026-09-28 12:01:51,975 [CONSUMIDOR] Pago 35 | TOMADO de la cola a las 12:01:51.975 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:02:07,021 [CONSUMIDOR] Pago 35 | TERMINADO a las 12:02:07.021 (tomado 12:01:51.975, duración 15.045 s) -> PROCESADO | Comprobante generado: comprobante_000035.txt
+lab03-consumer  | 2026-09-28 12:02:07,022 [CONSUMIDOR] Pago 36 | TOMADO de la cola a las 12:02:07.022 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:02:22,176 [CONSUMIDOR] Pago 36 | TERMINADO a las 12:02:22.176 (tomado 12:02:07.022, duración 15.153 s) -> PROCESADO | Comprobante generado: comprobante_000036.txt
+lab03-consumer  | 2026-09-28 12:02:22,177 [CONSUMIDOR] Pago 37 | TOMADO de la cola a las 12:02:22.177 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:02:37,454 [CONSUMIDOR] Pago 37 | TERMINADO a las 12:02:37.454 (tomado 12:02:22.177, duración 15.277 s) -> PROCESADO | Comprobante generado: comprobante_000037.txt
+lab03-consumer  | 2026-09-28 12:02:37,456 [CONSUMIDOR] Pago 38 | TOMADO de la cola a las 12:02:37.456 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:02:52,587 [CONSUMIDOR] Pago 38 | TERMINADO a las 12:02:52.587 (tomado 12:02:37.456, duración 15.131 s) -> PROCESADO | Comprobante generado: comprobante_000038.txt
+lab03-consumer  | 2026-09-28 12:02:52,588 [CONSUMIDOR] Pago 39 | TOMADO de la cola a las 12:02:52.588 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:03:07,935 [CONSUMIDOR] Pago 39 | TERMINADO a las 12:03:07.934 (tomado 12:02:52.588, duración 15.346 s) -> PROCESADO | Comprobante generado: comprobante_000039.txt
+lab03-consumer  | 2026-09-28 12:03:07,936 [CONSUMIDOR] Pago 40 | TOMADO de la cola a las 12:03:07.936 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:03:22,998 [CONSUMIDOR] Pago 40 | TERMINADO a las 12:03:22.997 (tomado 12:03:07.936, duración 15.061 s) -> PROCESADO | Comprobante generado: comprobante_000040.txt
+lab03-consumer  | 2026-09-28 12:03:23,001 [CONSUMIDOR] Pago 41 | TOMADO de la cola a las 12:03:23.001 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:03:38,058 [CONSUMIDOR] Pago 41 | TERMINADO a las 12:03:38.058 (tomado 12:03:23.001, duración 15.057 s) -> PROCESADO | Comprobante generado: comprobante_000041.txt
+lab03-consumer  | 2026-09-28 12:03:38,061 [CONSUMIDOR] Pago 42 | TOMADO de la cola a las 12:03:38.060 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:03:53,097 [CONSUMIDOR] Pago 42 | TERMINADO a las 12:03:53.097 (tomado 12:03:38.060, duración 15.036 s) -> PROCESADO | Comprobante generado: comprobante_000042.txt
+lab03-consumer  | 2026-09-28 12:03:53,098 [CONSUMIDOR] Pago 43 | TOMADO de la cola a las 12:03:53.098 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:04:08,119 [CONSUMIDOR] Pago 43 | TERMINADO a las 12:04:08.119 (tomado 12:03:53.098, duración 15.021 s) -> PROCESADO | Comprobante generado: comprobante_000043.txt
+lab03-consumer  | 2026-09-28 12:04:08,120 [CONSUMIDOR] Pago 44 | TOMADO de la cola a las 12:04:08.120 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:04:23,140 [CONSUMIDOR] Pago 44 | TERMINADO a las 12:04:23.140 (tomado 12:04:08.120, duración 15.020 s) -> PROCESADO | Comprobante generado: comprobante_000044.txt
+lab03-consumer  | 2026-09-28 12:04:23,141 [CONSUMIDOR] Pago 45 | TOMADO de la cola a las 12:04:23.141 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:04:38,182 [CONSUMIDOR] Pago 45 | TERMINADO a las 12:04:38.181 (tomado 12:04:23.141, duración 15.041 s) -> PROCESADO | Comprobante generado: comprobante_000045.txt
+lab03-consumer  | 2026-09-28 12:04:38,183 [CONSUMIDOR] Pago 46 | TOMADO de la cola a las 12:04:38.183 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:04:53,204 [CONSUMIDOR] Pago 46 | TERMINADO a las 12:04:53.204 (tomado 12:04:38.183, duración 15.020 s) -> PROCESADO | Comprobante generado: comprobante_000046.txt

@@ -1,0 +1,510 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API de pagos - Laboratorio 03",
+    "description": "Taller de Laboratorio N.º 3 - **Procesamiento asíncrono de eventos** (Optativa IV, FET).\n\nAutores: **David Felipe Garcia Ortiz** y **Juan David Claros**.\n\nEl `POST /pagos` guarda el pago en MySQL con estado `REGISTRADO`, publica su id en la cola `pagos.registrados` de RabbitMQ y **responde de inmediato**, sin esperar al consumidor. El consumidor procesa el mensaje por su cuenta (≈5 s), genera un comprobante y deja el pago en `PROCESADO`.\n\nPara verlo: registre un pago, consúltelo con `GET /pagos/{id}` enseguida (REGISTRADO) y otra vez pasados 10 segundos (PROCESADO).",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/pagos": {
+      "get": {
+        "tags": [
+          "Pagos"
+        ],
+        "summary": "Listar los últimos 100 pagos",
+        "operationId": "listar_pagos_pagos_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaPagos"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pagos"
+        ],
+        "summary": "Registrar un pago",
+        "description": "Valida el pago, lo inserta con estado `REGISTRADO`, publica `{\"pago_id\": id}` en la cola y responde **sin esperar el procesamiento**. Si los datos no son válidos responde `status: false` y no inserta ni publica nada.\n\nMedios válidos: transferencia, tarjeta, efectivo, pse, nequi.",
+        "operationId": "registrar_pago_pagos_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "referencia": {
+                    "type": "string",
+                    "maxLength": 50,
+                    "minLength": 1,
+                    "title": "Referencia",
+                    "description": "Referencia del pago",
+                    "examples": [
+                      "PAG-0001"
+                    ]
+                  },
+                  "valor": {
+                    "type": "number",
+                    "maximum": 999999999999.0,
+                    "exclusiveMinimum": 0.0,
+                    "title": "Valor",
+                    "description": "Valor del pago (número mayor que 0)",
+                    "examples": [
+                      125000
+                    ]
+                  },
+                  "medio": {
+                    "type": "string",
+                    "enum": [
+                      "transferencia",
+                      "tarjeta",
+                      "efectivo",
+                      "pse",
+                      "nequi"
+                    ],
+                    "title": "Medio",
+                    "description": "Medio de pago",
+                    "examples": [
+                      "transferencia"
+                    ]
+                  }
+                },
+                "type": "object",
+                "required": [
+                  "referencia",
+                  "valor",
+                  "medio"
+                ],
+                "title": "PagoEntrada"
+              },
+              "examples": {
+                "valido": {
+                  "summary": "Pago válido",
+                  "value": {
+                    "referencia": "PAG-0001",
+                    "valor": 125000,
+                    "medio": "transferencia"
+                  }
+                },
+                "invalido": {
+                  "summary": "Pago inválido",
+                  "value": {
+                    "referencia": "",
+                    "valor": -125000,
+                    "medio": "bitcoin"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Pago registrado y encolado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaRegistro"
+                },
+                "example": {
+                  "status": true,
+                  "message": "Pago registrado",
+                  "data": {
+                    "id": 1,
+                    "estado": "REGISTRADO"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos del pago inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaError"
+                },
+                "example": {
+                  "status": false,
+                  "message": "Datos del pago inválidos"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Base de datos o cola no disponibles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaError"
+                },
+                "example": {
+                  "status": false,
+                  "message": "No fue posible encolar el pago"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pagos/{pago_id}": {
+      "get": {
+        "tags": [
+          "Pagos"
+        ],
+        "summary": "Consultar un pago por su identificador",
+        "description": "Devuelve el pago con su estado actual. `procesamiento` es `null` mientras el consumidor no lo ha procesado.",
+        "operationId": "obtener_pago_pagos__pago_id__get",
+        "parameters": [
+          {
+            "name": "pago_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Identificador del pago",
+              "examples": [
+                "1"
+              ],
+              "title": "Pago Id"
+            },
+            "description": "Identificador del pago"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pago encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaPago"
+                },
+                "examples": {
+                  "registrado": {
+                    "summary": "Recién registrado",
+                    "value": {
+                      "status": true,
+                      "message": "Pago encontrado",
+                      "data": {
+                        "id": 1,
+                        "referencia": "PAG-0001",
+                        "valor": 125000,
+                        "medio": "transferencia",
+                        "fecha_registro": "2026-09-28T11:32:11.519",
+                        "estado": "REGISTRADO"
+                      }
+                    }
+                  },
+                  "procesado": {
+                    "summary": "Ya procesado",
+                    "value": {
+                      "status": true,
+                      "message": "Pago encontrado",
+                      "data": {
+                        "id": 1,
+                        "referencia": "PAG-0001",
+                        "valor": 125000,
+                        "medio": "transferencia",
+                        "fecha_registro": "2026-09-28T11:32:11.519",
+                        "estado": "PROCESADO",
+                        "procesamiento": {
+                          "id": 1,
+                          "fecha_toma": "2026-09-28T11:32:11.569",
+                          "fecha_procesamiento": "2026-09-28T11:32:16.596",
+                          "resultado": "Comprobante generado: comprobante_000001.txt"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Identificador inválido",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": false,
+                  "message": "Identificador de pago inválido"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pago no encontrado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": false,
+                  "message": "Pago no encontrado"
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "Salud"
+        ],
+        "summary": "Estado de la API",
+        "operationId": "salud_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RespuestaError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pago": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "referencia": {
+            "type": "string",
+            "title": "Referencia"
+          },
+          "valor": {
+            "type": "number",
+            "title": "Valor"
+          },
+          "medio": {
+            "type": "string",
+            "title": "Medio"
+          },
+          "fecha_registro": {
+            "type": "string",
+            "title": "Fecha Registro"
+          },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "REGISTRADO",
+              "PROCESADO"
+            ],
+            "title": "Estado"
+          },
+          "procesamiento": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Procesamiento"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "null mientras el pago no se ha procesado"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "referencia",
+          "valor",
+          "medio",
+          "fecha_registro",
+          "estado"
+        ],
+        "title": "Pago"
+      },
+      "PagoRegistrado": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "examples": [
+              1
+            ]
+          },
+          "estado": {
+            "type": "string",
+            "const": "REGISTRADO",
+            "title": "Estado",
+            "default": "REGISTRADO"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "title": "PagoRegistrado"
+      },
+      "Procesamiento": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "fecha_toma": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fecha Toma",
+            "description": "Hora en que el consumidor tomó el mensaje de la cola"
+          },
+          "fecha_procesamiento": {
+            "type": "string",
+            "title": "Fecha Procesamiento",
+            "description": "Hora en que el consumidor terminó"
+          },
+          "resultado": {
+            "type": "string",
+            "title": "Resultado"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "fecha_procesamiento",
+          "resultado"
+        ],
+        "title": "Procesamiento"
+      },
+      "RespuestaError": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "title": "Status",
+            "description": "Booleano, no cadena de texto",
+            "examples": [
+              false
+            ]
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "examples": [
+              "Datos del pago inválidos"
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "message"
+        ],
+        "title": "RespuestaError"
+      },
+      "RespuestaPago": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "title": "Status"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Pago"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "title": "RespuestaPago"
+      },
+      "RespuestaPagos": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "title": "Status"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/Pago"
+            },
+            "type": "array",
+            "title": "Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "title": "RespuestaPagos"
+      },
+      "RespuestaRegistro": {
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "title": "Status",
+            "description": "Booleano, no cadena de texto",
+            "examples": [
+              true
+            ]
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "examples": [
+              "Pago registrado"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/PagoRegistrado"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "title": "RespuestaRegistro"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Pagos",
+      "description": "Registro y consulta de pagos"
+    },
+    {
+      "name": "Salud",
+      "description": "Estado de la API"
+    }
+  ]
+}

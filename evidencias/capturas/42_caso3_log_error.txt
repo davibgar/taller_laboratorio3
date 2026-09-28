@@ -1,0 +1,6 @@
+2026-09-28 12:05:13
+docker compose logs consumer --tail 4
+lab03-consumer  | 2026-09-28 12:05:00,032 [CONSUMIDOR] Conectado a RabbitMQ (intento 1)
+lab03-consumer  | 2026-09-28 12:05:00,047 [CONSUMIDOR] Esperando mensajes en 'pagos.registrados' | PROCESS_SECONDS=5.0 | SIMULAR_FALLO=True
+lab03-consumer  | 2026-09-28 12:05:08,119 [CONSUMIDOR] Pago 47 | TOMADO de la cola a las 12:05:08.119 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:05:10,623 [CONSUMIDOR] Pago 47 | ERROR a las 12:05:10.623: Fallo simulado procesando la referencia FALLA-0001 -> mensaje NO confirmado, enviado a pagos.fallidos; el pago sigue REGISTRADO

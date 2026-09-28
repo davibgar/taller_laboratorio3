@@ -1,0 +1,4 @@
+2026-09-28 11:58:15
+docker compose stop consumer
+ Container lab03-consumer  Stopping
+ Container lab03-consumer  Stopped

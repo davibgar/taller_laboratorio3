@@ -1,0 +1,8 @@
+2026-09-28 11:58:39
+docker compose start consumer
+ Container lab03-rabbitmq  Waiting
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Healthy
+ Container lab03-mysql  Healthy
+ Container lab03-consumer  Starting
+ Container lab03-consumer  Started

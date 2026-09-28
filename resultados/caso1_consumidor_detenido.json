@@ -1,0 +1,26 @@
+{
+  "etiqueta": "caso1_consumidor_detenido",
+  "n": 5,
+  "ids": [
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "respuestas_ms": [
+    60.94,
+    23.52,
+    18.79,
+    21.79,
+    17.66
+  ],
+  "api_media_ms": 28.54,
+  "api_mediana_ms": 21.79,
+  "api_max_ms": 60.94,
+  "api_min_ms": 17.66,
+  "envio_total_s": 0.144,
+  "estados_al_terminar_envio": {
+    "REGISTRADO": 5
+  }
+}

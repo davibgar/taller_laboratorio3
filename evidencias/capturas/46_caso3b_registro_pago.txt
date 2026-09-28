@@ -1,0 +1,11 @@
+2026-09-28 12:05:25
+docker compose run --rm herramientas python registrar.py CAIDA-0001
+ Container lab03-mysql  Running
+ Container lab03-rabbitmq  Running
+ Container lab03-api  Running
+ Container lab03-rabbitmq  Waiting
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Healthy
+ Container lab03-mysql  Healthy
+12:05:28 POST /pagos {'referencia': 'CAIDA-0001', 'valor': 125000, 'medio': 'transferencia'}
+HTTP 201 en 49.56 ms -> {'status': True, 'message': 'Pago registrado', 'data': {'id': 48, 'estado': 'REGISTRADO'}}

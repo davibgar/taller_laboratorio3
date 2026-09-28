@@ -1,0 +1,16 @@
+2026-09-28 11:59:16
+docker compose logs consumer --tail 14
+lab03-consumer  | 2026-09-28 11:58:16,231 [CONSUMIDOR] SIGTERM recibido: el consumidor se detiene
+lab03-consumer  | 2026-09-28 11:58:42,223 [CONSUMIDOR] Conectado a MySQL (intento 1)
+lab03-consumer  | 2026-09-28 11:58:42,235 [CONSUMIDOR] Conectado a RabbitMQ (intento 1)
+lab03-consumer  | 2026-09-28 11:58:42,259 [CONSUMIDOR] Esperando mensajes en 'pagos.registrados' | PROCESS_SECONDS=5.0 | SIMULAR_FALLO=False
+lab03-consumer  | 2026-09-28 11:58:42,259 [CONSUMIDOR] Pago 22 | TOMADO de la cola a las 11:58:42.259 (redelivered=False)
+lab03-consumer  | 2026-09-28 11:58:47,347 [CONSUMIDOR] Pago 22 | TERMINADO a las 11:58:47.346 (tomado 11:58:42.259, duración 5.088 s) -> PROCESADO | Comprobante generado: comprobante_000022.txt
+lab03-consumer  | 2026-09-28 11:58:47,350 [CONSUMIDOR] Pago 23 | TOMADO de la cola a las 11:58:47.350 (redelivered=False)
+lab03-consumer  | 2026-09-28 11:58:52,604 [CONSUMIDOR] Pago 23 | TERMINADO a las 11:58:52.604 (tomado 11:58:47.350, duración 5.254 s) -> PROCESADO | Comprobante generado: comprobante_000023.txt
+lab03-consumer  | 2026-09-28 11:58:52,605 [CONSUMIDOR] Pago 24 | TOMADO de la cola a las 11:58:52.605 (redelivered=False)
+lab03-consumer  | 2026-09-28 11:58:57,678 [CONSUMIDOR] Pago 24 | TERMINADO a las 11:58:57.677 (tomado 11:58:52.605, duración 5.072 s) -> PROCESADO | Comprobante generado: comprobante_000024.txt
+lab03-consumer  | 2026-09-28 11:58:57,680 [CONSUMIDOR] Pago 25 | TOMADO de la cola a las 11:58:57.679 (redelivered=False)
+lab03-consumer  | 2026-09-28 11:59:02,847 [CONSUMIDOR] Pago 25 | TERMINADO a las 11:59:02.847 (tomado 11:58:57.679, duración 5.168 s) -> PROCESADO | Comprobante generado: comprobante_000025.txt
+lab03-consumer  | 2026-09-28 11:59:02,848 [CONSUMIDOR] Pago 26 | TOMADO de la cola a las 11:59:02.848 (redelivered=False)
+lab03-consumer  | 2026-09-28 11:59:08,034 [CONSUMIDOR] Pago 26 | TERMINADO a las 11:59:08.034 (tomado 11:59:02.848, duración 5.185 s) -> PROCESADO | Comprobante generado: comprobante_000026.txt

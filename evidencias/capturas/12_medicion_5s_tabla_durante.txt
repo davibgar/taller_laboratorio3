@@ -1,0 +1,26 @@
+2026-09-28 11:56:40
+docker compose exec mysql mysql -t -u pagos_user -p pagos_db -e "SELECT p.id, p.referencia, p.valor, p.medio_pago, p.fecha_registro, p.estado, pr.id AS proc_id, pr.fecha_toma, pr.fecha_procesamiento FROM pagos p LEFT JOIN procesamientos pr ON pr.pago_id = p.id WHERE p.referencia LIKE 'MED5%' ORDER BY p.id;"
++----+------------------+-----------+---------------+-------------------------+------------+---------+-------------------------+-------------------------+
+| id | referencia       | valor     | medio_pago    | fecha_registro          | estado     | proc_id | fecha_toma              | fecha_procesamiento     |
++----+------------------+-----------+---------------+-------------------------+------------+---------+-------------------------+-------------------------+
+|  2 | MED5-115630-0001 | 101000.00 | transferencia | 2026-09-28 11:56:30.076 | PROCESADO  |       2 | 2026-09-28 11:56:30.093 | 2026-09-28 11:56:35.112 |
+|  3 | MED5-115630-0002 | 102000.00 | transferencia | 2026-09-28 11:56:30.096 | PROCESADO  |       3 | 2026-09-28 11:56:35.138 | 2026-09-28 11:56:40.172 |
+|  4 | MED5-115630-0003 | 103000.00 | transferencia | 2026-09-28 11:56:30.125 | REGISTRADO |    NULL | NULL                    | NULL                    |
+|  5 | MED5-115630-0004 | 104000.00 | transferencia | 2026-09-28 11:56:30.142 | REGISTRADO |    NULL | NULL                    | NULL                    |
+|  6 | MED5-115630-0005 | 105000.00 | transferencia | 2026-09-28 11:56:30.161 | REGISTRADO |    NULL | NULL                    | NULL                    |
+|  7 | MED5-115630-0006 | 106000.00 | transferencia | 2026-09-28 11:56:30.176 | REGISTRADO |    NULL | NULL                    | NULL                    |
+|  8 | MED5-115630-0007 | 107000.00 | transferencia | 2026-09-28 11:56:30.196 | REGISTRADO |    NULL | NULL                    | NULL                    |
+|  9 | MED5-115630-0008 | 108000.00 | transferencia | 2026-09-28 11:56:30.218 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 10 | MED5-115630-0009 | 109000.00 | transferencia | 2026-09-28 11:56:30.237 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 11 | MED5-115630-0010 | 110000.00 | transferencia | 2026-09-28 11:56:30.263 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 12 | MED5-115630-0011 | 111000.00 | transferencia | 2026-09-28 11:56:30.284 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 13 | MED5-115630-0012 | 112000.00 | transferencia | 2026-09-28 11:56:30.300 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 14 | MED5-115630-0013 | 113000.00 | transferencia | 2026-09-28 11:56:30.315 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 15 | MED5-115630-0014 | 114000.00 | transferencia | 2026-09-28 11:56:30.332 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 16 | MED5-115630-0015 | 115000.00 | transferencia | 2026-09-28 11:56:30.346 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 17 | MED5-115630-0016 | 116000.00 | transferencia | 2026-09-28 11:56:30.365 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 18 | MED5-115630-0017 | 117000.00 | transferencia | 2026-09-28 11:56:30.389 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 19 | MED5-115630-0018 | 118000.00 | transferencia | 2026-09-28 11:56:30.403 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 20 | MED5-115630-0019 | 119000.00 | transferencia | 2026-09-28 11:56:30.427 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 21 | MED5-115630-0020 | 120000.00 | transferencia | 2026-09-28 11:56:30.442 | REGISTRADO |    NULL | NULL                    | NULL                    |
++----+------------------+-----------+---------------+-------------------------+------------+---------+-------------------------+-------------------------+

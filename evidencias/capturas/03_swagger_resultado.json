@@ -1,0 +1,34 @@
+{
+  "pago_id": 1,
+  "antes": {
+    "status": true,
+    "message": "Pago encontrado",
+    "data": {
+      "id": 1,
+      "referencia": "PAG-0001",
+      "valor": 125000,
+      "medio": "transferencia",
+      "fecha_registro": "2026-09-28T11:56:09.200",
+      "estado": "REGISTRADO",
+      "procesamiento": null
+    }
+  },
+  "despues": {
+    "status": true,
+    "message": "Pago encontrado",
+    "data": {
+      "id": 1,
+      "referencia": "PAG-0001",
+      "valor": 125000,
+      "medio": "transferencia",
+      "fecha_registro": "2026-09-28T11:56:09.200",
+      "estado": "PROCESADO",
+      "procesamiento": {
+        "id": 1,
+        "fecha_toma": "2026-09-28T11:56:09.243",
+        "fecha_procesamiento": "2026-09-28T11:56:14.398",
+        "resultado": "Comprobante generado: comprobante_000001.txt"
+      }
+    }
+  }
+}

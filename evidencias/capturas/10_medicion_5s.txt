@@ -1,0 +1,118 @@
+2026-09-28 11:56:27
+docker compose run --rm herramientas python medir.py --n 20 --prefijo MED5 --etiqueta medicion_5s
+ Container lab03-mysql  Running
+ Container lab03-rabbitmq  Running
+ Container lab03-api  Running
+ Container lab03-mysql  Waiting
+ Container lab03-rabbitmq  Waiting
+ Container lab03-rabbitmq  Healthy
+ Container lab03-mysql  Healthy
+Enviando 20 pagos seguidos a http://api:8000/pagos ...
+  #01 HTTP 201    63.39 ms  {"status": true, "message": "Pago registrado", "data": {"id": 2, "estado": "REGISTRADO"}}
+  #02 HTTP 201    29.18 ms  {"status": true, "message": "Pago registrado", "data": {"id": 3, "estado": "REGISTRADO"}}
+  #03 HTTP 201    14.94 ms  {"status": true, "message": "Pago registrado", "data": {"id": 4, "estado": "REGISTRADO"}}
+  #04 HTTP 201    20.01 ms  {"status": true, "message": "Pago registrado", "data": {"id": 5, "estado": "REGISTRADO"}}
+  #05 HTTP 201    15.31 ms  {"status": true, "message": "Pago registrado", "data": {"id": 6, "estado": "REGISTRADO"}}
+  #06 HTTP 201    19.35 ms  {"status": true, "message": "Pago registrado", "data": {"id": 7, "estado": "REGISTRADO"}}
+  #07 HTTP 201    20.25 ms  {"status": true, "message": "Pago registrado", "data": {"id": 8, "estado": "REGISTRADO"}}
+  #08 HTTP 201    20.80 ms  {"status": true, "message": "Pago registrado", "data": {"id": 9, "estado": "REGISTRADO"}}
+  #09 HTTP 201    25.89 ms  {"status": true, "message": "Pago registrado", "data": {"id": 10, "estado": "REGISTRADO"}}
+  #10 HTTP 201    17.54 ms  {"status": true, "message": "Pago registrado", "data": {"id": 11, "estado": "REGISTRADO"}}
+  #11 HTTP 201    17.98 ms  {"status": true, "message": "Pago registrado", "data": {"id": 12, "estado": "REGISTRADO"}}
+  #12 HTTP 201    15.78 ms  {"status": true, "message": "Pago registrado", "data": {"id": 13, "estado": "REGISTRADO"}}
+  #13 HTTP 201    16.81 ms  {"status": true, "message": "Pago registrado", "data": {"id": 14, "estado": "REGISTRADO"}}
+  #14 HTTP 201    14.05 ms  {"status": true, "message": "Pago registrado", "data": {"id": 15, "estado": "REGISTRADO"}}
+  #15 HTTP 201    17.97 ms  {"status": true, "message": "Pago registrado", "data": {"id": 16, "estado": "REGISTRADO"}}
+  #16 HTTP 201    24.54 ms  {"status": true, "message": "Pago registrado", "data": {"id": 17, "estado": "REGISTRADO"}}
+  #17 HTTP 201    13.67 ms  {"status": true, "message": "Pago registrado", "data": {"id": 18, "estado": "REGISTRADO"}}
+  #18 HTTP 201    20.64 ms  {"status": true, "message": "Pago registrado", "data": {"id": 19, "estado": "REGISTRADO"}}
+  #19 HTTP 201    17.65 ms  {"status": true, "message": "Pago registrado", "data": {"id": 20, "estado": "REGISTRADO"}}
+  #20 HTTP 201    23.05 ms  {"status": true, "message": "Pago registrado", "data": {"id": 21, "estado": "REGISTRADO"}}
+
+Tiempo de respuesta de la API: media 21.44 ms | máximo 63.39 ms | mínimo 13.67 ms
+Los 20 POST se enviaron en 0.433 s
+Estados justo después del envío: {'REGISTRADO': 20}
+
+Esperando a que el consumidor procese todos los pagos ...
+  11:56:30 procesados 0/20
+  11:56:32 procesados 0/20
+  11:56:34 procesados 0/20
+  11:56:36 procesados 1/20
+  11:56:39 procesados 1/20
+  11:56:41 procesados 2/20
+  11:56:43 procesados 2/20
+  11:56:45 procesados 2/20
+  11:56:47 procesados 3/20
+  11:56:49 procesados 3/20
+  11:56:51 procesados 4/20
+  11:56:53 procesados 4/20
+  11:56:55 procesados 5/20
+  11:56:57 procesados 5/20
+  11:56:59 procesados 5/20
+  11:57:01 procesados 6/20
+  11:57:04 procesados 6/20
+  11:57:06 procesados 7/20
+  11:57:08 procesados 7/20
+  11:57:10 procesados 7/20
+  11:57:12 procesados 8/20
+  11:57:14 procesados 8/20
+  11:57:16 procesados 9/20
+  11:57:18 procesados 9/20
+  11:57:20 procesados 9/20
+  11:57:22 procesados 10/20
+  11:57:24 procesados 10/20
+  11:57:26 procesados 11/20
+  11:57:28 procesados 11/20
+  11:57:30 procesados 11/20
+  11:57:32 procesados 12/20
+  11:57:34 procesados 12/20
+  11:57:36 procesados 13/20
+  11:57:38 procesados 13/20
+  11:57:40 procesados 13/20
+  11:57:42 procesados 14/20
+  11:57:44 procesados 14/20
+  11:57:46 procesados 15/20
+  11:57:48 procesados 15/20
+  11:57:50 procesados 15/20
+  11:57:53 procesados 16/20
+  11:57:55 procesados 16/20
+  11:57:57 procesados 17/20
+  11:57:59 procesados 17/20
+  11:58:01 procesados 17/20
+  11:58:03 procesados 18/20
+  11:58:05 procesados 18/20
+  11:58:07 procesados 19/20
+  11:58:09 procesados 19/20
+  11:58:11 procesados 19/20
+  11:58:13 procesados 20/20
+
+  id  | registro                | tomado de la cola       | procesado               | en cola (s) | registro->procesado (s)
+    2 | 2026-09-28T11:56:30.076 | 2026-09-28T11:56:30.093 | 2026-09-28T11:56:35.112 |       0.017 |      5.036
+    3 | 2026-09-28T11:56:30.096 | 2026-09-28T11:56:35.138 | 2026-09-28T11:56:40.172 |       5.042 |     10.076
+    4 | 2026-09-28T11:56:30.125 | 2026-09-28T11:56:40.195 | 2026-09-28T11:56:45.234 |      10.070 |     15.109
+    5 | 2026-09-28T11:56:30.142 | 2026-09-28T11:56:45.263 | 2026-09-28T11:56:50.315 |      15.121 |     20.173
+    6 | 2026-09-28T11:56:30.161 | 2026-09-28T11:56:50.363 | 2026-09-28T11:56:55.423 |      20.202 |     25.262
+    7 | 2026-09-28T11:56:30.176 | 2026-09-28T11:56:55.438 | 2026-09-28T11:57:00.460 |      25.262 |     30.284
+    8 | 2026-09-28T11:56:30.196 | 2026-09-28T11:57:00.477 | 2026-09-28T11:57:05.537 |      30.281 |     35.341
+    9 | 2026-09-28T11:56:30.218 | 2026-09-28T11:57:05.559 | 2026-09-28T11:57:10.601 |      35.341 |     40.383
+   10 | 2026-09-28T11:56:30.237 | 2026-09-28T11:57:10.668 | 2026-09-28T11:57:15.676 |      40.431 |     45.439
+   11 | 2026-09-28T11:56:30.263 | 2026-09-28T11:57:15.695 | 2026-09-28T11:57:20.701 |      45.432 |     50.438
+   12 | 2026-09-28T11:56:30.284 | 2026-09-28T11:57:20.722 | 2026-09-28T11:57:25.728 |      50.438 |     55.444
+   13 | 2026-09-28T11:56:30.300 | 2026-09-28T11:57:25.748 | 2026-09-28T11:57:30.758 |      55.448 |     60.458
+   14 | 2026-09-28T11:56:30.315 | 2026-09-28T11:57:30.779 | 2026-09-28T11:57:35.798 |      60.464 |     65.483
+   15 | 2026-09-28T11:56:30.332 | 2026-09-28T11:57:35.820 | 2026-09-28T11:57:40.852 |      65.488 |     70.520
+   16 | 2026-09-28T11:56:30.346 | 2026-09-28T11:57:41.190 | 2026-09-28T11:57:46.207 |      70.844 |     75.861
+   17 | 2026-09-28T11:56:30.365 | 2026-09-28T11:57:46.230 | 2026-09-28T11:57:51.239 |      75.865 |     80.874
+   18 | 2026-09-28T11:56:30.389 | 2026-09-28T11:57:51.254 | 2026-09-28T11:57:56.266 |      80.865 |     85.877
+   19 | 2026-09-28T11:56:30.403 | 2026-09-28T11:57:56.296 | 2026-09-28T11:58:01.307 |      85.893 |     90.904
+   20 | 2026-09-28T11:56:30.427 | 2026-09-28T11:58:01.324 | 2026-09-28T11:58:06.496 |      90.897 |     96.069
+   21 | 2026-09-28T11:56:30.442 | 2026-09-28T11:58:06.510 | 2026-09-28T11:58:11.523 |      96.068 |    101.081
+
+================ TABLA DE MEDICIÓN ================
+Tiempo de respuesta de la API (media de los 20 registros): 21.44 ms
+Tiempo de respuesta de la API (máximo observado)            : 63.39 ms
+Tiempo entre registro y procesamiento del primer pago       : 5.036 s
+Tiempo entre registro y procesamiento del último pago       : 101.081 s
+Tiempo total hasta que los 20 pagos quedaron PROCESADO   : 101.447 s
+===================================================
+Resultados guardados en resultados/medicion_5s.json

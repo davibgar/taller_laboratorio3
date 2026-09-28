@@ -1,0 +1,7 @@
+2026-09-28 12:06:10
+docker compose exec mysql mysql -t -u pagos_user -p pagos_db -e "SELECT p.id, p.referencia, p.valor, p.medio_pago, p.fecha_registro, p.estado, pr.id AS proc_id, pr.fecha_toma, pr.fecha_procesamiento FROM pagos p LEFT JOIN procesamientos pr ON pr.pago_id = p.id WHERE p.referencia LIKE 'FALLA%' ORDER BY p.id;"
++----+------------+-----------+---------------+-------------------------+-----------+---------+-------------------------+-------------------------+
+| id | referencia | valor     | medio_pago    | fecha_registro          | estado    | proc_id | fecha_toma              | fecha_procesamiento     |
++----+------------+-----------+---------------+-------------------------+-----------+---------+-------------------------+-------------------------+
+| 47 | FALLA-0001 | 125000.00 | transferencia | 2026-09-28 12:05:08.105 | PROCESADO |      48 | 2026-09-28 12:06:00.183 | 2026-09-28 12:06:05.202 |
++----+------------+-----------+---------------+-------------------------+-----------+---------+-------------------------+-------------------------+

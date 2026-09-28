@@ -1,0 +1,9 @@
+2026-09-28 12:06:09
+docker compose logs consumer --tail 8
+lab03-consumer  | 2026-09-28 12:05:50,379 [CONSUMIDOR] Conectado a MySQL (intento 1)
+lab03-consumer  | 2026-09-28 12:05:50,389 [CONSUMIDOR] Conectado a RabbitMQ (intento 1)
+lab03-consumer  | 2026-09-28 12:05:50,407 [CONSUMIDOR] Esperando mensajes en 'pagos.registrados' | PROCESS_SECONDS=5.0 | SIMULAR_FALLO=False
+lab03-consumer  | 2026-09-28 12:05:50,407 [CONSUMIDOR] Pago 48 | TOMADO de la cola a las 12:05:50.407 (redelivered=True)
+lab03-consumer  | 2026-09-28 12:05:55,437 [CONSUMIDOR] Pago 48 | TERMINADO a las 12:05:55.436 (tomado 12:05:50.407, duración 5.029 s) -> PROCESADO | Comprobante generado: comprobante_000048.txt
+lab03-consumer  | 2026-09-28 12:06:00,183 [CONSUMIDOR] Pago 47 | TOMADO de la cola a las 12:06:00.182 (redelivered=False)
+lab03-consumer  | 2026-09-28 12:06:05,229 [CONSUMIDOR] Pago 47 | TERMINADO a las 12:06:05.229 (tomado 12:06:00.182, duración 5.046 s) -> PROCESADO | Comprobante generado: comprobante_000047.txt

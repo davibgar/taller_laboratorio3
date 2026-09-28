@@ -1,0 +1,11 @@
+2026-09-28 11:58:38
+docker compose exec mysql mysql -t -u pagos_user -p pagos_db -e "SELECT p.id, p.referencia, p.valor, p.medio_pago, p.fecha_registro, p.estado, pr.id AS proc_id, pr.fecha_toma, pr.fecha_procesamiento FROM pagos p LEFT JOIN procesamientos pr ON pr.pago_id = p.id WHERE p.referencia LIKE 'DET%' ORDER BY p.id;"
++----+-----------------+-----------+---------------+-------------------------+------------+---------+------------+---------------------+
+| id | referencia      | valor     | medio_pago    | fecha_registro          | estado     | proc_id | fecha_toma | fecha_procesamiento |
++----+-----------------+-----------+---------------+-------------------------+------------+---------+------------+---------------------+
+| 22 | DET-115821-0001 | 101000.00 | transferencia | 2026-09-28 11:58:21.486 | REGISTRADO |    NULL | NULL       | NULL                |
+| 23 | DET-115821-0002 | 102000.00 | transferencia | 2026-09-28 11:58:21.513 | REGISTRADO |    NULL | NULL       | NULL                |
+| 24 | DET-115821-0003 | 103000.00 | transferencia | 2026-09-28 11:58:21.537 | REGISTRADO |    NULL | NULL       | NULL                |
+| 25 | DET-115821-0004 | 104000.00 | transferencia | 2026-09-28 11:58:21.554 | REGISTRADO |    NULL | NULL       | NULL                |
+| 26 | DET-115821-0005 | 105000.00 | transferencia | 2026-09-28 11:58:21.575 | REGISTRADO |    NULL | NULL       | NULL                |
++----+-----------------+-----------+---------------+-------------------------+------------+---------+------------+---------------------+

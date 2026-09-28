@@ -1,0 +1,222 @@
+{
+  "etiqueta": "medicion_5s",
+  "n": 20,
+  "ids": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "respuestas_ms": [
+    63.39,
+    29.18,
+    14.94,
+    20.01,
+    15.31,
+    19.35,
+    20.25,
+    20.8,
+    25.89,
+    17.54,
+    17.98,
+    15.78,
+    16.81,
+    14.05,
+    17.97,
+    24.54,
+    13.67,
+    20.64,
+    17.65,
+    23.05
+  ],
+  "api_media_ms": 21.44,
+  "api_mediana_ms": 18.66,
+  "api_max_ms": 63.39,
+  "api_min_ms": 13.67,
+  "envio_total_s": 0.433,
+  "estados_al_terminar_envio": {
+    "REGISTRADO": 20
+  },
+  "t_cliente_hasta_todos_procesados_s": 103.086,
+  "detalle": [
+    {
+      "id": 2,
+      "registro": "2026-09-28T11:56:30.076",
+      "toma": "2026-09-28T11:56:30.093",
+      "procesado": "2026-09-28T11:56:35.112",
+      "espera_en_cola_s": 0.017,
+      "registro_a_procesado_s": 5.036
+    },
+    {
+      "id": 3,
+      "registro": "2026-09-28T11:56:30.096",
+      "toma": "2026-09-28T11:56:35.138",
+      "procesado": "2026-09-28T11:56:40.172",
+      "espera_en_cola_s": 5.042,
+      "registro_a_procesado_s": 10.076
+    },
+    {
+      "id": 4,
+      "registro": "2026-09-28T11:56:30.125",
+      "toma": "2026-09-28T11:56:40.195",
+      "procesado": "2026-09-28T11:56:45.234",
+      "espera_en_cola_s": 10.07,
+      "registro_a_procesado_s": 15.109
+    },
+    {
+      "id": 5,
+      "registro": "2026-09-28T11:56:30.142",
+      "toma": "2026-09-28T11:56:45.263",
+      "procesado": "2026-09-28T11:56:50.315",
+      "espera_en_cola_s": 15.121,
+      "registro_a_procesado_s": 20.173
+    },
+    {
+      "id": 6,
+      "registro": "2026-09-28T11:56:30.161",
+      "toma": "2026-09-28T11:56:50.363",
+      "procesado": "2026-09-28T11:56:55.423",
+      "espera_en_cola_s": 20.202,
+      "registro_a_procesado_s": 25.262
+    },
+    {
+      "id": 7,
+      "registro": "2026-09-28T11:56:30.176",
+      "toma": "2026-09-28T11:56:55.438",
+      "procesado": "2026-09-28T11:57:00.460",
+      "espera_en_cola_s": 25.262,
+      "registro_a_procesado_s": 30.284
+    },
+    {
+      "id": 8,
+      "registro": "2026-09-28T11:56:30.196",
+      "toma": "2026-09-28T11:57:00.477",
+      "procesado": "2026-09-28T11:57:05.537",
+      "espera_en_cola_s": 30.281,
+      "registro_a_procesado_s": 35.341
+    },
+    {
+      "id": 9,
+      "registro": "2026-09-28T11:56:30.218",
+      "toma": "2026-09-28T11:57:05.559",
+      "procesado": "2026-09-28T11:57:10.601",
+      "espera_en_cola_s": 35.341,
+      "registro_a_procesado_s": 40.383
+    },
+    {
+      "id": 10,
+      "registro": "2026-09-28T11:56:30.237",
+      "toma": "2026-09-28T11:57:10.668",
+      "procesado": "2026-09-28T11:57:15.676",
+      "espera_en_cola_s": 40.431,
+      "registro_a_procesado_s": 45.439
+    },
+    {
+      "id": 11,
+      "registro": "2026-09-28T11:56:30.263",
+      "toma": "2026-09-28T11:57:15.695",
+      "procesado": "2026-09-28T11:57:20.701",
+      "espera_en_cola_s": 45.432,
+      "registro_a_procesado_s": 50.438
+    },
+    {
+      "id": 12,
+      "registro": "2026-09-28T11:56:30.284",
+      "toma": "2026-09-28T11:57:20.722",
+      "procesado": "2026-09-28T11:57:25.728",
+      "espera_en_cola_s": 50.438,
+      "registro_a_procesado_s": 55.444
+    },
+    {
+      "id": 13,
+      "registro": "2026-09-28T11:56:30.300",
+      "toma": "2026-09-28T11:57:25.748",
+      "procesado": "2026-09-28T11:57:30.758",
+      "espera_en_cola_s": 55.448,
+      "registro_a_procesado_s": 60.458
+    },
+    {
+      "id": 14,
+      "registro": "2026-09-28T11:56:30.315",
+      "toma": "2026-09-28T11:57:30.779",
+      "procesado": "2026-09-28T11:57:35.798",
+      "espera_en_cola_s": 60.464,
+      "registro_a_procesado_s": 65.483
+    },
+    {
+      "id": 15,
+      "registro": "2026-09-28T11:56:30.332",
+      "toma": "2026-09-28T11:57:35.820",
+      "procesado": "2026-09-28T11:57:40.852",
+      "espera_en_cola_s": 65.488,
+      "registro_a_procesado_s": 70.52
+    },
+    {
+      "id": 16,
+      "registro": "2026-09-28T11:56:30.346",
+      "toma": "2026-09-28T11:57:41.190",
+      "procesado": "2026-09-28T11:57:46.207",
+      "espera_en_cola_s": 70.844,
+      "registro_a_procesado_s": 75.861
+    },
+    {
+      "id": 17,
+      "registro": "2026-09-28T11:56:30.365",
+      "toma": "2026-09-28T11:57:46.230",
+      "procesado": "2026-09-28T11:57:51.239",
+      "espera_en_cola_s": 75.865,
+      "registro_a_procesado_s": 80.874
+    },
+    {
+      "id": 18,
+      "registro": "2026-09-28T11:56:30.389",
+      "toma": "2026-09-28T11:57:51.254",
+      "procesado": "2026-09-28T11:57:56.266",
+      "espera_en_cola_s": 80.865,
+      "registro_a_procesado_s": 85.877
+    },
+    {
+      "id": 19,
+      "registro": "2026-09-28T11:56:30.403",
+      "toma": "2026-09-28T11:57:56.296",
+      "procesado": "2026-09-28T11:58:01.307",
+      "espera_en_cola_s": 85.893,
+      "registro_a_procesado_s": 90.904
+    },
+    {
+      "id": 20,
+      "registro": "2026-09-28T11:56:30.427",
+      "toma": "2026-09-28T11:58:01.324",
+      "procesado": "2026-09-28T11:58:06.496",
+      "espera_en_cola_s": 90.897,
+      "registro_a_procesado_s": 96.069
+    },
+    {
+      "id": 21,
+      "registro": "2026-09-28T11:56:30.442",
+      "toma": "2026-09-28T11:58:06.510",
+      "procesado": "2026-09-28T11:58:11.523",
+      "espera_en_cola_s": 96.068,
+      "registro_a_procesado_s": 101.081
+    }
+  ],
+  "primer_pago_s": 5.036,
+  "ultimo_pago_s": 101.081,
+  "total_20_procesados_s": 101.447
+}

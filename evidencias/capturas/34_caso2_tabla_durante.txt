@@ -1,0 +1,26 @@
+2026-09-28 12:00:09
+docker compose exec mysql mysql -t -u pagos_user -p pagos_db -e "SELECT p.id, p.referencia, p.valor, p.medio_pago, p.fecha_registro, p.estado, pr.id AS proc_id, pr.fecha_toma, pr.fecha_procesamiento FROM pagos p LEFT JOIN procesamientos pr ON pr.pago_id = p.id WHERE p.referencia LIKE 'LENTO%' ORDER BY p.id;"
++----+-------------------+-----------+---------------+-------------------------+------------+---------+-------------------------+-------------------------+
+| id | referencia        | valor     | medio_pago    | fecha_registro          | estado     | proc_id | fecha_toma              | fecha_procesamiento     |
++----+-------------------+-----------+---------------+-------------------------+------------+---------+-------------------------+-------------------------+
+| 27 | LENTO-115940-0001 | 101000.00 | transferencia | 2026-09-28 11:59:40.413 | PROCESADO  |      27 | 2026-09-28 11:59:40.465 | 2026-09-28 11:59:55.655 |
+| 28 | LENTO-115940-0002 | 102000.00 | transferencia | 2026-09-28 11:59:40.476 | PROCESADO  |      28 | 2026-09-28 11:59:55.676 | 2026-09-28 12:00:10.879 |
+| 29 | LENTO-115940-0003 | 103000.00 | transferencia | 2026-09-28 11:59:40.509 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 30 | LENTO-115940-0004 | 104000.00 | transferencia | 2026-09-28 11:59:40.529 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 31 | LENTO-115940-0005 | 105000.00 | transferencia | 2026-09-28 11:59:40.553 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 32 | LENTO-115940-0006 | 106000.00 | transferencia | 2026-09-28 11:59:40.572 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 33 | LENTO-115940-0007 | 107000.00 | transferencia | 2026-09-28 11:59:40.591 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 34 | LENTO-115940-0008 | 108000.00 | transferencia | 2026-09-28 11:59:40.613 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 35 | LENTO-115940-0009 | 109000.00 | transferencia | 2026-09-28 11:59:40.637 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 36 | LENTO-115940-0010 | 110000.00 | transferencia | 2026-09-28 11:59:40.662 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 37 | LENTO-115940-0011 | 111000.00 | transferencia | 2026-09-28 11:59:40.681 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 38 | LENTO-115940-0012 | 112000.00 | transferencia | 2026-09-28 11:59:40.703 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 39 | LENTO-115940-0013 | 113000.00 | transferencia | 2026-09-28 11:59:40.724 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 40 | LENTO-115940-0014 | 114000.00 | transferencia | 2026-09-28 11:59:40.747 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 41 | LENTO-115940-0015 | 115000.00 | transferencia | 2026-09-28 11:59:40.769 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 42 | LENTO-115940-0016 | 116000.00 | transferencia | 2026-09-28 11:59:40.805 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 43 | LENTO-115940-0017 | 117000.00 | transferencia | 2026-09-28 11:59:40.851 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 44 | LENTO-115940-0018 | 118000.00 | transferencia | 2026-09-28 11:59:40.885 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 45 | LENTO-115940-0019 | 119000.00 | transferencia | 2026-09-28 11:59:40.926 | REGISTRADO |    NULL | NULL                    | NULL                    |
+| 46 | LENTO-115940-0020 | 120000.00 | transferencia | 2026-09-28 11:59:40.970 | REGISTRADO |    NULL | NULL                    | NULL                    |
++----+-------------------+-----------+---------------+-------------------------+------------+---------+-------------------------+-------------------------+
